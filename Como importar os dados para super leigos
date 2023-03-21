@@ -1,0 +1,17 @@
+import mysql.connector
+import pandas as pd
+
+usuario = '' #digite o usuário 
+senha = '' # Digite a senha
+banco_de_dados = '' # digite o nome do banco de dados
+endereco = '' # endereço ip servidor, se na propria maquina use 'localhost' ou '127.0.0.1'.
+
+cnx = mysql.connector.connect(user= usuario , password= senha ,
+                              host= endereco ,
+                              database= banco_de_dados ,  auth_plugin='mysql_native_password')
+
+df = pd.read_sql_query("SELECT * FROM nome_da_tabela", cnx)
+
+cnx.close() #Fechar conexão
+
+df.columns.values #Se voc  não  sabe o nome das colunas #
